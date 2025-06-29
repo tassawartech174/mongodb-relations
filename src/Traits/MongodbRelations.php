@@ -2,7 +2,7 @@
 
 namespace TassawarTech174\MongodbRelations\Traits;
 
-use TassawarTech174\MongodbRelations\Relations\UnidirectionalBelongsToMany;
+use TassawarTech174\MongodbRelations\Relations\UnidirectionalManyToManyRelation;
 
 trait MongodbRelations
 {
