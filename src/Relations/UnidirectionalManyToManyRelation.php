@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
-class UnidirectionalBelongsToMany extends Relation
+class UnidirectionalManyToManyRelation extends Relation
 {
     protected $parent;
     protected $related;

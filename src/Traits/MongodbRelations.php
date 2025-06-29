@@ -14,6 +14,4 @@ trait MongodbRelations
         $instance = new $relatedModel;
         return new UnidirectionalManyToManyRelation($instance, $this, $localKeyField);
     }
-
-    // 🔜 You can add more custom relationship methods here in the future.
 }
