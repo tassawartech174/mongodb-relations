@@ -1,6 +1,6 @@
 {
   "name": "tassawartech174/mongodb-relations",
-  "description": "Custom unidirectional many-to-many relation for MongoDB in Laravel",
+  "description": "Custom relations for MongoDB in Laravel",
   "type": "library",
   "license": "MIT",
   "autoload": {
@@ -10,7 +10,7 @@
   },
   "require": {
     "php": ">=7.4",
-    "illuminate/database": "^8.0|^9.0|^10.0"
+    "illuminate/database": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0"
   },
   "extra": {
     "laravel": {
