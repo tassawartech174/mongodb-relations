@@ -58,15 +58,15 @@ In your Eloquent model (e.g. `User`), use the provided trait:
 Would you like me to help format other sections like `Usage` or `API` in this same style? -->
 
 <pre>
-    use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
+use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
 
-    class User extends Model
+class User extends Model
+{
+    use MongodbRelations;
+
+    public function roles()
     {
-        use MongodbRelations;
-
-        public function roles()
-        {
-            return $this->manyToManyRelation(Role::class, 'role_ids');
-        }
+        return $this->manyToManyRelation(Role::class, 'role_ids');
     }
+}
 </pre>
