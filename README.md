@@ -9,6 +9,7 @@ Custom unidirectional many-to-many relationship support for MongoDB in Laravel.
 ## 📦 Installation
 
 ```bash
+
 composer require tassawartech174/mongodb-relations
 
 ```
@@ -35,12 +36,6 @@ php artisan vendor:publish --tag=mongodb-relations-config
 
 <pre>
 config/mongodb-relations.php
-</pre>
-
-- You can now access it using:
-
-<pre>
-config('mongodb-relations.default_local_key');
 </pre>
 
 ---
