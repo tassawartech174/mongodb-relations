@@ -24,5 +24,15 @@ This will publish:
 
 config/mongodb-relations.php
 
+Example config file:
+
+return [
+    'default_local_key' => 'related_ids',
+];
+
+You can now access it using:
+
+config('mongodb-relations.default_local_key');
+
 ```
 
