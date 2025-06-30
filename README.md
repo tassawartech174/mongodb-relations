@@ -116,8 +116,3 @@ $user->roles()->sync(['id1', 'id3']);
 ## 🔐 License
 
 This package is open-source software licensed under the MIT license.
-
-
----
-
-Would you like this saved as a `.md` file or zipped along with your package structure?
