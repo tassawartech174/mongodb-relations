@@ -1,5 +1,5 @@
 <?php
 
 return [
-    // Config valuee here
+    'default_local_key' => 'related_ids',
 ];
