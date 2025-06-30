@@ -15,3 +15,19 @@ composer require tassawartech174/mongodb-relations
 If you want to customize the default local key used in relations, you can publish the config file:
 
 php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbRelationsServiceProvider" --tag=mongodb-relations-config
+
+🔌 Usage
+
+```bash
+
+use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
+
+class User extends Model
+{
+    use MongodbRelations;
+
+    public function roles()
+    {
+        return $this->manyToManyRelation(Role::class, 'role_ids');
+    }
+}
