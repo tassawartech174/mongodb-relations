@@ -14,9 +14,9 @@ trait MongodbRelations
     {
         $instance = new $relatedModel;
         if (empty($localKeyField)) {
-        $classBaseName = class_basename($relatedModel);
-        $localKeyField = Str::snake($classBaseName) . '_ids';
-    }
+            $classBaseName = class_basename($relatedModel);
+            $localKeyField = Str::snake($classBaseName) . '_ids';
+        }
         return new UnidirectionalManyToManyRelation($instance, $this, $localKeyField);
     }
 }
