@@ -45,7 +45,7 @@ php artisan vendor:publish --tag=mongodb-relations-config
 
 ## 🚀 Usage
 
-**Step 1: Use the Trait**
+**Step 1: Use the Trait** <br>
 In your Eloquent model (e.g. User), use the provided trait:
 
 - `<code>` is inline, not block-level
