@@ -96,3 +96,26 @@ $user->roles()->detach(['id1']);
 <pre>
 $user->roles()->sync(['id1', 'id3']);
 </pre>
+
+## ✅ Supported Laravel Versions
+
+- Laravel 6.x
+
+- Laravel 7.x
+
+- Laravel 8.x
+
+- Laravel 9.x
+
+- Laravel 10.x
+
+- Laravel 11.x
+
+## 🔐 License
+
+This package is open-source software licensed under the MIT license.
+
+
+---
+
+Would you like this saved as a `.md` file or zipped along with your package structure?
