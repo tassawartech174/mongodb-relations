@@ -32,13 +32,13 @@ php artisan vendor:publish --tag=mongodb-relations-config
 - This will publish:
 
 <pre>
-    config/mongodb-relations.php
+config/mongodb-relations.php
 </pre>
 
 - You can now access it using:
 
 <pre>
-    config('mongodb-relations.default_local_key');
+config('mongodb-relations.default_local_key');
 </pre>
 
 ---
