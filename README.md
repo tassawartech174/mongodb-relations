@@ -97,6 +97,8 @@ $user->roles()->detach(['id1']);
 $user->roles()->sync(['id1', 'id3']);
 </pre>
 
+---
+
 ## ✅ Supported Laravel Versions
 
 - Laravel 6.x
