@@ -9,7 +9,7 @@ trait MongodbRelations
     /**
      * Custom MongoDB many-to-many (unidirectional).
     */
-    public function manyToManyRelation(string $relatedModel, string $localKeyField)
+    public function manyToManyRelation(string $relatedModel, string $localKeyField = null)
     {
         $instance = new $relatedModel;
         $localKeyField = $localKeyField ?? config('mongodb-relations.default_local_key', 'related_ids');

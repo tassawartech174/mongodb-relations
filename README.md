@@ -22,6 +22,12 @@ If you want to customize the default local key used in relations, publish the pa
 php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbRelationsServiceProvider" --tag=mongodb-relations-config
 
 ```
+Or use this command:
+
+```bash
+php artisan vendor:publish --tag=mongodb-relations-config
+
+```
 
 - This will publish:
 
@@ -36,3 +42,5 @@ php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbR
 </pre>
 
 ---
+
+## ⚙️ Usages
