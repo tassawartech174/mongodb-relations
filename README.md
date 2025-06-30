@@ -60,6 +60,22 @@ class User extends Model
 }
 </pre>
 
+Or use relation like:
+
+<pre>
+use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
+
+class User extends Model
+{
+    use MongodbRelations;
+
+    public function roles()
+    {
+        return $this->manyToManyRelation(Role::class);
+    }
+}
+</pre>
+
 **Step 3: Relationship Methods**
 
 - Get related models:
