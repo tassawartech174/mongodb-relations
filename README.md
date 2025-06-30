@@ -21,7 +21,16 @@ If you want to customize the default local key used in relations, publish the pa
 php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbRelationsServiceProvider" --tag=mongodb-relations-config
 
 ```
-### 💡 Summary
+
+### 🧠 Why avoid `<code>`?
+
+- `<code>` is inline, not block-level
+- Doesn't render multiline code or syntax highlighting
+- GitHub Markdown prefers triple backticks (` ```php `)
+
+---
+
+Would you like me to help format other sections like `Usage` or `API` in this same style?
 
 This will publish:
 
