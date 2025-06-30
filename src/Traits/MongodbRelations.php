@@ -7,11 +7,12 @@ use TassawarTech174\MongodbRelations\Relations\UnidirectionalManyToManyRelation;
 trait MongodbRelations
 {
     /**
-     * Custom MongoDB-style many-to-many (unidirectional).
-     */
+     * Custom MongoDB many-to-many (unidirectional).
+    */
     public function manyToManyRelation(string $relatedModel, string $localKeyField)
     {
         $instance = new $relatedModel;
+        $localKeyField = $localKeyField ?? config('mongodb-relations.default_local_key', 'related_ids');
         return new UnidirectionalManyToManyRelation($instance, $this, $localKeyField);
     }
 }
