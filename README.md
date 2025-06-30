@@ -29,4 +29,10 @@ php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbR
     config/mongodb-relations.php
 </pre>
 
+- You can now access it using:
+
+<pre>
+    config('mongodb-relations.default_local_key');
+</pre>
+
 ---
