@@ -43,10 +43,12 @@ php artisan vendor:publish --tag=mongodb-relations-config
 
 ---
 
-## 🔌 Usage
+## 🚀 Usage
 
 Step 1: Use the Trait
 In your Eloquent model (e.g. User), use the provided trait:
+
+- Any markdown (like `## Section`) that comes **after an unclosed code block** will not be rendered properly
 
 <pre>
     use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
