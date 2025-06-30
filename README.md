@@ -11,23 +11,12 @@ Custom unidirectional many-to-many relationship support for MongoDB in Laravel.
 ```bash
 composer require tassawartech174/mongodb-relations
 
-⚙️ Configuration (Optional)
-If you want to customize the default local key used in relations, you can publish the config file:
+---
 
-php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbRelationsServiceProvider" --tag=mongodb-relations-config
-
-🔌 Usage
+### ⚙️ Configuration (Optional)
 
 ```bash
+If you want to customize the default behavior, publish the config file:
 
-use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
-
-class User extends Model
-{
-    use MongodbRelations;
-
-    public function roles()
-    {
-        return $this->manyToManyRelation(Role::class, 'role_ids');
-    }
-}
+php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbRelationsServiceProvider" --tag=mongodb-relations-config
+This will create config/mongodb-relations.php.
