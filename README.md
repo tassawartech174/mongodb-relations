@@ -101,7 +101,6 @@ $user->roles()->sync(['id1', 'id3']);
 
 ## ✅ Supported Laravel Versions
 
-
 - Laravel 6.x
 
 - Laravel 7.x
