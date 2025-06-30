@@ -70,3 +70,29 @@ class User extends Model
     }
 }
 </pre>
+
+**Step 3: Relationship Methods**
+
+- Get related models:
+
+<pre>
+$user->roles;
+</pre>
+
+- Attach related models:
+
+<pre>
+$user->roles()->attach(['id1', 'id2']);
+</pre>
+
+- Detach related models:
+
+<pre>
+$user->roles()->detach(['id1']);
+</pre>
+
+- Sync related models:
+
+<pre>
+$user->roles()->sync(['id1', 'id3']);
+</pre>
