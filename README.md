@@ -19,3 +19,10 @@ If you want to customize the default local key used in relations, publish the pa
 
 ```bash
 php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbRelationsServiceProvider" --tag=mongodb-relations-config
+
+This will publish:
+
+config/mongodb-relations.php
+
+```
+
