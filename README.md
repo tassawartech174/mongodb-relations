@@ -28,6 +28,8 @@ This will publish:
 
 config/mongodb-relations.php
 
+```
+
 Example config file:
 
 ```
