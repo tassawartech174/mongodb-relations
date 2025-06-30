@@ -49,13 +49,13 @@ php artisan vendor:publish --tag=mongodb-relations-config
 
 In your Eloquent model (e.g. `User`), use the provided trait:
 
-- `<code>` is inline, not block-level
+<!-- - `<code>` is inline, not block-level
 - Doesn't render multiline code or syntax highlighting
 - GitHub Markdown prefers triple backticks (` ```php `)
 
 ---
 
-Would you like me to help format other sections like `Usage` or `API` in this same style?
+Would you like me to help format other sections like `Usage` or `API` in this same style? -->
 
 <pre>
     use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
