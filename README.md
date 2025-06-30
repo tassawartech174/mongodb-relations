@@ -43,4 +43,21 @@ php artisan vendor:publish --tag=mongodb-relations-config
 
 ---
 
-## ⚙️ Usages
+## 🔌 Usage
+
+Step 1: Use the Trait
+In your Eloquent model (e.g. User), use the provided trait:
+
+<pre>
+    use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
+
+    class User extends Model
+    {
+        use MongodbRelations;
+
+        public function roles()
+        {
+            return $this->manyToManyRelation(Role::class, 'role_ids');
+        }
+    }
+</pre>
