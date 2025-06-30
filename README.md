@@ -22,24 +22,22 @@ php artisan vendor:publish --provider="TassawarTech174\MongodbRelations\MongodbR
 
 ```
 
----
-
 - This will publish:
 
-<pre> ```
+<pre>
     config/mongodb-relations.php
-``` </pre>
+</pre>
 
 - Example config file:
 
-<pre> ```
+<pre>
     return [
         'default_local_key' => 'related_ids',
     ];
-``` </pre>
+</pre>
 
 - You can now access it using:
 
-<pre> ```
+<pre>
     config('mongodb-relations.default_local_key');
-``` </pre>
+</pre>
