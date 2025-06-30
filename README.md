@@ -48,7 +48,13 @@ php artisan vendor:publish --tag=mongodb-relations-config
 **Step 1: Use the Trait**
 In your Eloquent model (e.g. User), use the provided trait:
 
-- Any markdown (like `## Section`) that comes **after an unclosed code block** will not be rendered properly
+- `<code>` is inline, not block-level
+- Doesn't render multiline code or syntax highlighting
+- GitHub Markdown prefers triple backticks (` ```php `)
+
+---
+
+Would you like me to help format other sections like `Usage` or `API` in this same style?
 
 <pre>
     use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
