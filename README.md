@@ -12,6 +12,8 @@ Custom unidirectional many-to-many relationship support for MongoDB in Laravel.
 composer require tassawartech174/mongodb-relations
 
 ```
+**Requires PHP 7.4+ and Laravel 6.x – 11.x.**
+
 ---
 
 ## ⚙️ Configuration
@@ -48,14 +50,6 @@ config('mongodb-relations.default_local_key');
 **Step 1: Use the Trait**
 
 In your Eloquent model (e.g. `User`), use the provided trait:
-
-<!-- - `<code>` is inline, not block-level
-- Doesn't render multiline code or syntax highlighting
-- GitHub Markdown prefers triple backticks (` ```php `)
-
----
-
-Would you like me to help format other sections like `Usage` or `API` in this same style? -->
 
 <pre>
 use TassawarTech174\MongodbRelations\Traits\MongodbRelations;
