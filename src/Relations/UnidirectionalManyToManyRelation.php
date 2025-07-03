@@ -8,30 +8,39 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 
 class UnidirectionalManyToManyRelation extends Relation
 {
-    protected $parent;
-    protected $related;
-    protected $localKey;
+    protected Model $parent;
+    protected Model $related;
+    protected string $localKey;
+    protected string $relatedKey;
+    protected string $parentKey;
 
-    public function __construct(Model $related, Model $parent, $localKey)
-    {
+    public function __construct(
+        Model $related,
+        Model $parent,
+        string $localKey,
+        string $relatedKey = '_id',
+        string $parentKey = '_id'
+    ) {
         $this->related = $related;
         $this->parent = $parent;
         $this->localKey = $localKey;
+        $this->relatedKey = $relatedKey;
+        $this->parentKey = $parentKey;
 
         parent::__construct($related->newQuery(), $parent);
     }
 
     /**
-     * Required by base Relation class.
-     */
+     * Base relation constraints are not applied here.
+    */
     public function addConstraints()
     {
-        // We don't add any default constraints here.
+        // No global constraints
     }
 
     /**
-     * Get the results of the relationship.
-     */
+     * Return related models for the current parent.
+    */
     public function getResults()
     {
         $ids = $this->parent->{$this->localKey} ?? [];
@@ -40,19 +49,30 @@ class UnidirectionalManyToManyRelation extends Relation
             return $this->related->newCollection();
         }
 
-        return $this->related->whereIn('_id', $ids)->get();
+        return $this->related
+            ->whereIn($this->relatedKey, $ids)
+            ->get();
     }
 
     /**
-     * Eager load constraints.
-     */
+     * Apply constraints for eager loading.
+    */
     public function addEagerConstraints(array $models)
     {
-        $allIds = collect($models)->pluck($this->localKey)->flatten()->unique()->toArray();
+        $allIds = collect($models)
+            ->pluck($this->localKey)
+            ->flatten()
+            ->unique()
+            ->toArray();
 
-        $this->query->whereIn('_id', $allIds);
+        if (!empty($allIds)) {
+            $this->query->whereIn($this->relatedKey, $allIds);
+        }
     }
 
+    /**
+     * Initialize relation on all models to an empty collection.
+    */
     public function initRelation(array $models, $relation)
     {
         foreach ($models as $model) {
@@ -62,47 +82,54 @@ class UnidirectionalManyToManyRelation extends Relation
         return $models;
     }
 
+    /**
+     * Match the eagerly loaded results to their parents.
+    */
     public function match(array $models, Collection $results, $relation)
     {
-        $resultDict = $results->keyBy('_id');
+        $resultDict = $results->keyBy($this->relatedKey);
 
         foreach ($models as $model) {
             $relatedIds = $model->{$this->localKey} ?? [];
 
             $relatedItems = collect($relatedIds)->map(function ($id) use ($resultDict) {
                 return $resultDict[$id] ?? null;
-            })->filter()->values()->all(); // 🔧 convert to array with ->all()
+            })->filter()->values()->all();
 
-            $model->setRelation(
-                $relation,
-                $this->related->newCollection($relatedItems)
-            );
+            $model->setRelation($relation, $this->related->newCollection($relatedItems));
         }
 
         return $models;
     }
-    public function sync(array $ids, $detaching = true)
-    {
-        $ids = array_values(array_unique($ids)); // Clean & unique
 
+    /**
+     * Sync the related IDs into the parent document field.
+    */
+    public function sync(array $ids, bool $detaching = true)
+    {
+        $ids = array_values(array_unique($ids));
         $current = $this->parent->{$this->localKey} ?? [];
 
         $attached = array_diff($ids, $current);
         $detached = $detaching ? array_diff($current, $ids) : [];
 
-        // Final set of IDs to save
-        $final = $detaching ? $ids : array_unique(array_merge($current, $ids));
+        $final = $detaching
+            ? $ids
+            : array_values(array_unique(array_merge($current, $ids)));
 
-        // Save updated IDs to the parent model
         $this->parent->{$this->localKey} = $final;
         $this->parent->save();
 
         return [
             'attached' => array_values($attached),
             'detached' => array_values($detached),
-            'updated' => [],
+            'updated'  => [],
         ];
     }
+
+    /**
+     * Attach one or more IDs to the parent document.
+    */
     public function attach($ids)
     {
         $ids = array_values((array) $ids);
@@ -112,6 +139,9 @@ class UnidirectionalManyToManyRelation extends Relation
         $this->parent->save();
     }
 
+    /**
+     * Detach one or more IDs from the parent document.
+    */
     public function detach($ids = null)
     {
         $existing = $this->parent->{$this->localKey} ?? [];
