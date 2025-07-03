@@ -9,7 +9,6 @@ Custom unidirectional many-to-many relationship support for MongoDB in Laravel.
 ## 📦 Installation
 
 ```bash
-
 composer require tassawartech174/mongodb-relations
 
 ```
