@@ -20,5 +20,6 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "keywords": ["laravel", "mongodb", "relations", "Unidirectional Many To Many Relation"]
 }
