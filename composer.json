@@ -1,24 +1,15 @@
 {
   "name": "tassawartech174/mongodb-relations",
   "description": "Custom Laravel Eloquent relationships for MongoDB using jenssegers/mongodb and mongodb/laravel-mongodb. Supports unidirectional many-to-many and reverse lookups for embedded and reference-based relations.",
-  "keywords": [
-    "laravel",
-    "mongodb",
-    "eloquent",
-    "relationships",
-    "many-to-many",
-    "custom relations",
-    "mongodb eloquent relationships",
-    "mongodb/laravel-mongodb",
-    "jenssegers",
-    "laravel mongodb relations",
-    "laravel eloquent mongodb",
-    "reverse relation mongodb",
-    "laravel mongodb package",
-    "unidirectional relationship"
-  ],
+  "keywords": ["laravel", "mongodb", "eloquent", "relationships", "many-to-many", "custom relations", "reverse relation mongodb", "unidirectional relationship"],
   "type": "library",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Tassawar Hussain",
+      "email": "tasawarhussain8271@gmail.com"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "TassawarTech174\\MongodbRelations\\": "src/"
