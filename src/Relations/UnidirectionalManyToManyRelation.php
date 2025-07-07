@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 
 class UnidirectionalManyToManyRelation extends Relation
 {
-    protected Model $parent;
-    protected Model $related;
+    protected $parent;
+    protected $related;
     protected string $localKey;
     protected string $relatedKey;
     protected string $parentKey;
@@ -18,8 +18,8 @@ class UnidirectionalManyToManyRelation extends Relation
         Model $related,
         Model $parent,
         string $localKey,
-        string $relatedKey = '_id',
-        string $parentKey = '_id'
+        string $relatedKey,
+        string $parentKey
     ) {
         $this->related = $related;
         $this->parent = $parent;

@@ -4,13 +4,14 @@ namespace TassawarTech174\MongodbRelations\Relations;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Eloquent\Collection;
 
 class ReverseUnidirectionalManyToManyRelation extends Relation
 {
     protected $related;
     protected $parent;
-    protected $foreignKey;
-    protected $parentKey;
+    protected string $foreignKey;
+    protected string $parentKey;
 
     public function __construct(Model $related, Model $parent, $foreignKey, $parentKey)
     {
@@ -29,6 +30,37 @@ class ReverseUnidirectionalManyToManyRelation extends Relation
         }
     }
 
+    public function addEagerConstraints(array $models)
+    {
+        $parentIds = collect($models)->pluck($this->parentKey)->unique()->toArray();
+
+        $this->query->whereIn($this->foreignKey, $parentIds);
+    }
+
+    public function initRelation(array $models, $relation)
+    {
+        foreach ($models as $model) {
+            $model->setRelation($relation, $this->related->newCollection());
+        }
+
+        return $models;
+    }
+
+    public function match(array $models, Collection $results, $relation)
+    {
+        $foreignKey = $this->foreignKey;
+
+        $resultsByKey = $results->groupBy($foreignKey);
+
+        foreach ($models as $model) {
+            $key = $model->getAttribute($this->parentKey);
+            $related = $resultsByKey[$key] ?? $this->related->newCollection();
+            $model->setRelation($relation, $related);
+        }
+
+        return $models;
+    }
+
     public function getResults()
     {
         return $this->query->get();
@@ -42,5 +74,10 @@ class ReverseUnidirectionalManyToManyRelation extends Relation
     public function getLocalKey()
     {
         return $this->foreignKey;
+    }
+
+    public function getQualifiedRelatedKeyName()
+    {
+        return $this->related->getQualifiedKeyName();
     }
 }

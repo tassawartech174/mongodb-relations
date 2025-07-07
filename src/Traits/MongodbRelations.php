@@ -12,14 +12,15 @@ trait MongodbRelations
     /**
      * Custom MongoDB many-to-many (unidirectional).
     */
-    public function manyToManyRelation($related, $collection = null, $foreignKey = null, $otherKey = null, $parentKey = null, $relatedKey = null, $relation = null) 
+    public function manyToManyRelation($related, $foreignKey = null, $otherKey = null, $parentKey = null, $relatedKey = null, $relation = null) 
     {
         $instance = new $related;
         $foreignKey ??= Str::snake(class_basename($related)) . '_ids';
         $otherKey ??= '_id';
         $parentKey ??= $this->getKeyName();
         $relatedKey ??= $instance->getKeyName();
-        if (is_array($this->{$foreignKey} ?? null)) {
+        $parentFields = $this->getFillable();
+        if (in_array($foreignKey, $parentFields)) {
             return new UnidirectionalManyToManyRelation(
                 related: $instance,
                 parent: $this,
