@@ -101,6 +101,14 @@ $user->roles()->detach(['id1']);
 $user->roles()->sync(['id1', 'id3']);
 </pre>
 
+- Models where relations:
+
+<pre>
+$user->whereRelationField('roles', 'name', 'operater', 'search value);
+
+$user->orWhereRelationField('roles', 'name', 'operater', 'search value);
+</pre>
+
 ---
 
 ## ✅ Supported Laravel Versions
